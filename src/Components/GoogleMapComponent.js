@@ -1,6 +1,6 @@
 // global google
 import React, { Component } from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
 import { keys } from '../APIs/keys';
 import '../App.css'
 
@@ -49,4 +49,4 @@ class GoogleMapComponent extends Component {
 
 export default GoogleMapComponent
 
-
+// , Marker, InfoWindow

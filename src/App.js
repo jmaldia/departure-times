@@ -42,6 +42,9 @@ class App extends Component {
       return null;
     }
 
+
+    dataSFGov.getLocationSF()
+
     return (
       <div className="App">
         <GoogleMapComponent
