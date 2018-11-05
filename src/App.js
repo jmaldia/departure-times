@@ -14,11 +14,13 @@ class App extends Component {
         lng: 0
       }, 
       loading: true,
+      locations: [],
       marker: []
     }
   }
 
   componentDidMount(props) {
+    
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
@@ -32,6 +34,15 @@ class App extends Component {
         this.setState({ loading: false });
       }
     )
+
+    // Load locations
+    // const locationData = dataSFGov.getLocationSF()
+    //   .then(locations => {
+    //     return locations
+    //   })
+
+    console.log(dataSFGov.dataFromSFGov)
+    this.setState({locations: dataSFGov.dataFromSFGov})
   }
 
   render() {
@@ -42,8 +53,7 @@ class App extends Component {
       return null;
     }
 
-
-    dataSFGov.getLocationSF()
+    console.log(this.state.locations)
 
     return (
       <div className="App">
