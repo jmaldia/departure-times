@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import Search from './Components/Search'
+import Location from './Components/Location'
 import GoogleMapComponent from './Components/GoogleMapComponent'
 
 import * as dataSFGov from './APIs/dataSFGov'
@@ -41,8 +44,15 @@ class App extends Component {
     //     return locations
     //   })
 
-    console.log(dataSFGov.dataFromSFGov)
-    this.setState({locations: dataSFGov.dataFromSFGov})
+    dataSFGov.getDataSF().then(locations => {
+      this.setState({locations})
+    })
+
+    if (this.state.locations[20]) {
+      this.setState({
+        currentLocation: this.state.locations[20].location.coordinates
+      })
+    }
   }
 
   render() {
@@ -53,10 +63,12 @@ class App extends Component {
       return null;
     }
 
-    console.log(this.state.locations)
+    console.log(this.state.locations[20])
 
     return (
       <div className="App">
+        <Search {...this.state} />
+        <Location {...this.state} />
         <GoogleMapComponent
           google={google} 
           initialCenter={currentLocation} 
