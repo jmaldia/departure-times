@@ -1,15 +1,15 @@
 // global google
 import React, { Component } from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
 import { keys } from '../APIs/keys';
 import '../App.css'
 
 const MapComponent = withScriptjs(withGoogleMap(props =>
   <GoogleMap
     defaultZoom={15}
-    zoom={15}
+    zoom={props.zoom}
     defaultCenter={{ lat: 40.8257712, lng: -74.1074718 }}
-    center={{ lat: 40.8257712, lng: -74.1074718 }}
+    center={props.initialCenter}
   >
     { 
         // props.markerResults && props.markerResults.filter(marker => marker.isVisible).map((marker) => (
@@ -48,3 +48,5 @@ class GoogleMapComponent extends Component {
 }
 
 export default GoogleMapComponent
+
+// , Marker, InfoWindow
