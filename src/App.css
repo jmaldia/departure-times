@@ -1,3 +1,6 @@
+body {
+  width: 100%;
+}
 .App {
   text-align: center;
 }
@@ -32,16 +35,67 @@
 }
 
 
-/**********************/
-/* LOCATION COMPONENT */
+/************************/
+/*   SEARCH COMPONENT   */
+
+.Search {
+  z-index: 4;
+  position: fixed;
+  top: 20;
+  margin: 12px 190px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: transparent;
+  overflow: scroll;
+}
+
+.Search input {
+  padding: 9px;
+  min-width: 200px;
+  max-width: 200px;
+  width: 200px;
+  border: none;
+  border-radius: 2px;
+  font-size: 17px;
+  text-align: center;
+  background-color: rgba(256, 256, 256, .75);
+  color: #444;
+  box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
+    -webkit-box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
+    -moz-box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
+}
+
+.Search button {
+  padding: 9px;
+  margin-left: 5px;
+  min-width: 150px;
+  max-width: 150px;
+  width: 150px;
+  border: none;
+  border-radius: 2px;
+  background-color: #16a085;
+  color: #fff;
+  font-size: 17px;
+  box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
+    -webkit-box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
+    -moz-box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
+}
+
+/* END SEARCH COMPONENT */
+/************************/
+
+
+
+/**************************/
+/*   LOCATION COMPONENT   */
 
 .Location {
   z-index: 4;
   position: fixed;
   top: 0;
   left: 0;
-  margin: 10% 7%;
-  height: 750px;
+  margin: 62px 12px;
+  height: 85%;
   min-width: 400px;
   max-width: 600px;
   width: 30%;
@@ -50,4 +104,5 @@
   overflow: scroll;
 }
 
-/**********************/
+/* END LOCATION COMPONENT */
+/**************************/

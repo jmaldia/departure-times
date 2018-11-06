@@ -6,11 +6,13 @@ const Location = props => {
             {
                 props.locations.map((location, index) => {
                     return (
-                        <div>
-                            <h1 key="index">{location.applicant}</h1>
+                        <div key="index">
+                            <h1>{location.applicant}</h1>
                             <p>{location.address}</p>
+                            <p>Latitude: {location.latitude}</p>
+                            <p>Longitude: {location.longitude}</p>
                             <p>{location.fooditems}</p>
-                            <a href={location.scheduler}>Schedule</a>
+                            <a href={location.schedule}>Schedule</a>
                         </div>
                     )
                 })
