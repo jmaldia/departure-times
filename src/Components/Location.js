@@ -5,7 +5,14 @@ const Location = props => {
         <div className="Location">
             {
                 props.locations.map((location, index) => {
-                    return <p key={index}>{location.applicant}</p>
+                    return (
+                        <div>
+                            <h1 key="index">{location.applicant}</h1>
+                            <p>{location.address}</p>
+                            <p>{location.fooditems}</p>
+                            <a href={location.scheduler}>Schedule</a>
+                        </div>
+                    )
                 })
             }
         </div>
