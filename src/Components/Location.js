@@ -9,7 +9,11 @@ const Location = props => {
                 {
                     props.locations.map((location, index) => {
                         return (
-                            <div className="Truck-wrapper">
+                            <div 
+                                className="Truck-wrapper"
+                                // onMouseEnter={props.clickMarker}
+                                // onMouseLeave={props.closeAllInfoWindow}
+                            >
                                 <div className="Truck-image"></div>
                                 <div key="index" className="Truck">
                                     <h3>{location.applicant}</h3>
@@ -32,8 +36,3 @@ const Location = props => {
 }
 
 export default Location
-
-
-// <p>Latitude: {location.latitude}</p>
-// <p>Longitude: {location.longitude}</p>
-// 

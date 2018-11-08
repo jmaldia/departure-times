@@ -20,7 +20,7 @@ class App extends Component {
       }, 
       loading: true,
       locations: [],
-      marker: [], 
+      markers: [], 
       drawer: false
     }
   }
@@ -28,7 +28,9 @@ class App extends Component {
   componentDidMount(props) {
     this.setState({ loading: false });
 
+    // Grabs food truck data
     dataSFGov.getDataSF().then(locations => {
+      // Creates array for markers
       const markers = locations.map(location => {
         return {
           address: location.address,
@@ -53,6 +55,7 @@ class App extends Component {
   }
 
 
+  // Shows food trucks around the user within a specific radius
   handleLocalization = (event) => {
     event.preventDefault()
     navigator.geolocation.getCurrentPosition(
@@ -70,16 +73,30 @@ class App extends Component {
     )
   }
 
+
+  // Closes all the infoWindow - helper
+  closeAllInfoWindow() {
+    this.state.markers.forEach(markerMap => {
+      markerMap.isOpen = false
+    })
+    this.setState((prevState) => ({ markers: prevState.markers }))
+  }
+
+
+  // Shows infoWindow when a marker is clicked
+  // Closes other windows when a marker is clicked
   clickMarker = (marker) => {
-    // this.closeAllInfoWindow()
+    this.closeAllInfoWindow()
     marker.isOpen = true
 
     this.setState((prevState) => ({ markers: prevState.markers }))
   }
 
+
+  // Opens the sidebar 
+  // This uses the state drawer to use a specific class when the state is true/false
   openDrawer = () => {
     this.setState({ drawer: !this.state.drawer })
-    console.log(this.state.drawer)
   }
 
 
@@ -100,6 +117,8 @@ class App extends Component {
         <Location 
           {...this.state} 
           openDrawer={this.openDrawer}  
+          clickMarker={this.clickMarker}
+          closeAllInfoWindow={this.closeAllInfoWindow}
         />
         <GoogleMapComponent
           {...this.state}
