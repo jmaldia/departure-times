@@ -4,7 +4,7 @@ const Search = props => {
     return (
         <div className="Search">
             <form> 
-                <button type="submit" onClick={props.handleLocalization}>What's near me?</button>
+                <button type="submit" onClick={(event) => props.handleLocalization(event)}>What's near me?</button>
             </form>
         </div>
     )

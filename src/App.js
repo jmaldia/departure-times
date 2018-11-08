@@ -15,52 +15,46 @@ class App extends Component {
     super(props)
     this.state = {
       currentLocation: {
-        lat: 37.7866541,
-        lng: -122.4253287
+        lat: 37.7689242,
+        lng: -122.4170418
       }, 
       loading: true,
       locations: [],
-      marker: []
+      marker: [], 
+      drawer: false
     }
   }
 
   componentDidMount(props) {
-    
-    // navigator.geolocation.getCurrentPosition(
-    //   position => {
-    //     const { latitude, longitude } = position.coords;
-
-    //     this.setState({
-    //       currentLocation: { lat: latitude, lng: longitude },
-    //       loading: false
-    //     })
-    //   },
-    //   () => {
-    //     this.setState({ loading: false });
-    //   }
-    // )
-
-    // Load locations
-    // const locationData = dataSFGov.getLocationSF()
-    //   .then(locations => {
-    //     return locations
-    //   })
-
-
     this.setState({ loading: false });
 
     dataSFGov.getDataSF().then(locations => {
-      this.setState({locations})
-    })
-
-    if (this.state.locations[20]) {
-      this.setState({
-        currentLocation: this.state.locations[20].location.coordinates
+      const markers = locations.map(location => {
+        return {
+          address: location.address,
+          applicant: location.applicant, 
+          foodItems: location.fooditems,
+          coordinates: {
+            lat: Number(location.latitude),
+            lng: Number(location.longitude)
+          },
+          schedule: location.schedule,
+          isOpen: false, 
+          isVisible: true,
+          animation: 0
+        }
       })
-    }
+
+      this.setState({
+        locations, 
+        markers
+      })
+    })
   }
 
-  handleLocalization = () => {
+
+  handleLocalization = (event) => {
+    event.preventDefault()
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
@@ -76,25 +70,41 @@ class App extends Component {
     )
   }
 
+  clickMarker = (marker) => {
+    // this.closeAllInfoWindow()
+    marker.isOpen = true
+
+    this.setState((prevState) => ({ markers: prevState.markers }))
+  }
+
+  openDrawer = () => {
+    this.setState({ drawer: !this.state.drawer })
+    console.log(this.state.drawer)
+  }
+
+
+
   render() {
     const { loading, currentLocation } = this.state;
-    const { google } = this.props;
 
     if (loading) {
       return null;
     }
 
+    console.log(this.state.markers)
     console.log(this.state.locations[20])
 
     return (
       <div className="App">
-        <Search {...this.state} />
-        <Location {...this.state} />
+        <Search {...this.state} handleLocalization={this.handleLocalization}/>
+        <Location 
+          {...this.state} 
+          openDrawer={this.openDrawer}  
+        />
         <GoogleMapComponent
-          google={google} 
-          initialCenter={currentLocation} 
-          zoom={10}
           {...this.state}
+          initialCenter={currentLocation} 
+          clickMarker={this.clickMarker}
         />
       </div>
     );
