@@ -1,3 +1,5 @@
+/*global google*/
+
 import React, { Component } from 'react'
 
 import Search from './Components/Search'
@@ -13,8 +15,8 @@ class App extends Component {
     super(props)
     this.state = {
       currentLocation: {
-        lat: 0,
-        lng: 0
+        lat: 37.7866541,
+        lng: -122.4253287
       }, 
       loading: true,
       locations: [],
@@ -24,6 +26,41 @@ class App extends Component {
 
   componentDidMount(props) {
     
+    // navigator.geolocation.getCurrentPosition(
+    //   position => {
+    //     const { latitude, longitude } = position.coords;
+
+    //     this.setState({
+    //       currentLocation: { lat: latitude, lng: longitude },
+    //       loading: false
+    //     })
+    //   },
+    //   () => {
+    //     this.setState({ loading: false });
+    //   }
+    // )
+
+    // Load locations
+    // const locationData = dataSFGov.getLocationSF()
+    //   .then(locations => {
+    //     return locations
+    //   })
+
+
+    this.setState({ loading: false });
+
+    dataSFGov.getDataSF().then(locations => {
+      this.setState({locations})
+    })
+
+    if (this.state.locations[20]) {
+      this.setState({
+        currentLocation: this.state.locations[20].location.coordinates
+      })
+    }
+  }
+
+  handleLocalization = () => {
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
@@ -37,22 +74,6 @@ class App extends Component {
         this.setState({ loading: false });
       }
     )
-
-    // Load locations
-    // const locationData = dataSFGov.getLocationSF()
-    //   .then(locations => {
-    //     return locations
-    //   })
-
-    dataSFGov.getDataSF().then(locations => {
-      this.setState({locations})
-    })
-
-    if (this.state.locations[20]) {
-      this.setState({
-        currentLocation: this.state.locations[20].location.coordinates
-      })
-    }
   }
 
   render() {
