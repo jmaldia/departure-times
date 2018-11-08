@@ -32,7 +32,6 @@ const MapComponent = withScriptjs(withGoogleMap(props =>
 ))
 
 class GoogleMapComponent extends Component {
-    
     render() {
         return (
             <MapComponent
@@ -47,6 +46,6 @@ class GoogleMapComponent extends Component {
     }
 }
 
-export default GoogleMapComponent
 
+export default GoogleMapComponent
 // , Marker, InfoWindow
