@@ -113,13 +113,12 @@ body {
   min-width: 450px;
   max-width: 450px;
   margin-top: 35px;
-  transform: translateX(-410px);
   transition: transform .9s;
 }
 
 .Location-hide {
-  transform: translateX(-360px);
-  transition: transform 1.5s;
+  transform: translateX(-410px);
+  transition: transform 1.2s;
 }
 
 .Venues {
@@ -163,7 +162,7 @@ body {
 }
 
 .Truck h3 {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   text-transform: uppercase;
   color: #2d3436;
   font-size: 1.2rem;
@@ -181,7 +180,7 @@ body {
 }
 
 .Truck a:hover {
-  color: #f1c40f;
+  color: #fdcb6e;;
 }
 
 .Location button {
@@ -197,24 +196,19 @@ body {
   box-shadow: 1.5px 1.2px 2.5px 0.9px rgba(173,173,173,0.69);
     -webkit-box-shadow: 1.5px 1.2px 2.5px 0.9px rgba(173,173,173,0.69);
     -moz-box-shadow: 1.5px 1.2px 2.5px 0.9px rgba(173,173,173,0.69);
-  transform: translateX(-1px)
+  transform: translateX(-1px);
+  cursor: pointer;
 }
 
 .Location button:hover {
   background-color: rgba(236, 236, 236, .75);
-  color: #ffffff;
+  color: #fdcb6e;
 }
 /* END LOCATION COMPONENT */
 /**************************/
 
 
-
-
-
-.map-icon-label .map-icon {
-	font-size: 24px;
-	color: #f39c12;
-	line-height: 48px;
-	text-align: center;
-	white-space: nowrap;
+.fas {
+  font-size: 1.75em;
+  font-weight: 900;
 }

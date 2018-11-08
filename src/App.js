@@ -20,7 +20,8 @@ class App extends Component {
       }, 
       loading: true,
       locations: [],
-      marker: []
+      marker: [], 
+      drawer: false
     }
   }
 
@@ -76,6 +77,11 @@ class App extends Component {
     this.setState((prevState) => ({ markers: prevState.markers }))
   }
 
+  openDrawer = () => {
+    this.setState({ drawer: !this.state.drawer })
+    console.log(this.state.drawer)
+  }
+
 
 
   render() {
@@ -91,7 +97,10 @@ class App extends Component {
     return (
       <div className="App">
         <Search {...this.state} handleLocalization={this.handleLocalization}/>
-        <Location {...this.state} />
+        <Location 
+          {...this.state} 
+          openDrawer={this.openDrawer}  
+        />
         <GoogleMapComponent
           {...this.state}
           initialCenter={currentLocation} 

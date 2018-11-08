@@ -1,8 +1,10 @@
 import React from 'react'
 
 const Location = props => {
+    let venueClass = props.drawer ? "Location" : "Location Location-hide"
+
     return (
-        <div className="Location">
+        <div className={venueClass}>
             <div className="Venues">
                 {
                     props.locations.map((location, index) => {
@@ -20,7 +22,11 @@ const Location = props => {
                     })
                 }
             </div>
-            <button><i class="fas fa-greater-than"></i></button>
+            <button onClick={props.openDrawer}>
+                {
+                    props.drawer ? <i class="fas fa-less-than"></i> : <i class="fas fa-greater-than"></i> 
+                }
+            </button>
         </div>
     )
 }
@@ -30,4 +36,4 @@ export default Location
 
 // <p>Latitude: {location.latitude}</p>
 // <p>Longitude: {location.longitude}</p>
-// <i class="fas fa-less-than"></i>
+// 

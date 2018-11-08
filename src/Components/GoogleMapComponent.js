@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 import { keys } from '../APIs/keys';
+import { mapStyle } from './GoogleMapStyle';
 import '../App.css'
 
 const MapComponent = withScriptjs(withGoogleMap(props => 
@@ -12,8 +13,7 @@ const MapComponent = withScriptjs(withGoogleMap(props =>
         center={props.initialCenter}
     >
         { 
-            props.markers && props.markers.filter(marker => marker.isVisible).map((marker, index) => {
-                console.log(marker.coordinates)
+            props.markers && props.markers.filter(marker => marker.isVisible && (location => location.coordinates.lat !== 0 && location.coordinates.lng !== 0)).map((marker, index) => {
                 return (
                     <Marker 
                         key={index} 
@@ -21,6 +21,7 @@ const MapComponent = withScriptjs(withGoogleMap(props =>
                         onClick={() => props.clickMarker(marker) }
                         animation={marker.animation}
                         icon={'http://www.jonmaldia.com/img/van.png'}
+                        styles={mapStyle}
                     >
                         { marker.isOpen && (
                             <InfoWindow>
