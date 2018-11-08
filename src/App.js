@@ -13,13 +13,14 @@ class App extends Component {
     super(props)
     this.state = {
       currentLocation: {
-        lat: 37.7689242,
-        lng: -122.4170418
+        lat: 37.771721,
+        lng: -122.4424658
       }, 
       loading: true,
       locations: [],
       markers: [], 
-      drawer: true
+      drawer: true, 
+      zoom: 13
     }
   }
 
@@ -55,15 +56,17 @@ class App extends Component {
 
 
   // Shows food trucks around the user within a specific radius
-  handleLocalization = (event) => {
+  handleLocalization = (event, value) => {
+    console.log(event.target)
     event.preventDefault()
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
-
+        
         this.setState({
           currentLocation: { lat: latitude, lng: longitude },
-          loading: false
+          loading: false, 
+          zoom: value
         })
       },
       () => {
@@ -113,7 +116,7 @@ class App extends Component {
       return null;
     }
 
-    console.log(this.state.locations[10])
+    // console.log(this.state.locations[10])
     return (
       <div className="App">
         <Search {...this.state} handleLocalization={this.handleLocalization}/>

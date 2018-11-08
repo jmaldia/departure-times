@@ -4,7 +4,22 @@ const Search = props => {
     return (
         <div className="Search">
             <form> 
-                <button type="submit" onClick={(event) => props.handleLocalization(event)}>What's near me?</button>
+                
+                    <button 
+                        onClick={(event) => props.handleLocalization(event, 13)}
+                    >
+                        The Whole City
+                    </button>
+                    <button 
+                        onClick={(event) => props.handleLocalization(event, 15)}
+                    >
+                        Wider Area
+                    </button>
+                    <button 
+                        onClick={(event) => props.handleLocalization(event, 17)}
+                    >
+                        A Few Blocks
+                    </button>
             </form>
         </div>
     )
