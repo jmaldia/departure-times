@@ -57,8 +57,8 @@ class App extends Component {
 
   // Shows food trucks around the user within a specific radius
   handleLocalization = (event, value) => {
-    console.log(event.target)
     event.preventDefault()
+
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
@@ -95,9 +95,10 @@ class App extends Component {
     this.setState((prevState) => ({ markers: prevState.markers }))
   }
 
-  clickLocation = (location) => {
+
+  // Shows marker location on map when you hover on a listed food truck on the sidebar
+  hoverLocation = (location) => {
     let marker = this.state.markers.find(marker => marker.id === location.objectid)
-    
     this.clickMarker(marker)
   }
 
@@ -123,7 +124,7 @@ class App extends Component {
         <Location 
           {...this.state} 
           openDrawer={this.openDrawer}  
-          clickLocation={this.clickLocation}
+          hoverLocation={this.hoverLocation}
           closeAllInfoWindow={this.closeAllInfoWindow}
         />
         <GoogleMapComponent

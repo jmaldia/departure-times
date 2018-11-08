@@ -11,8 +11,3 @@ export const getDataSF = () => {
             console.log(err)
         })
 }
-
-export const getLocationSF = () => {
-    // const data = getDataSF()
-    // console.log(data)
-}

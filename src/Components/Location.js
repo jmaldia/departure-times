@@ -12,11 +12,9 @@ const Location = props => {
                             <div 
                                 key={index}
                                 className="Truck-wrapper"
-                                onMouseOver={ () => props.clickLocation(location) }
+                                onMouseOver={ () => props.hoverLocation(location) }
                             >
-                                <div className="Truck-image"
-                                // onMouseLeave={props.closeAllInfoWindow}
-                                ></div>
+                                <div className="Truck-image"></div>
                                 <div className="Truck">
                                     <h3>{location.applicant}</h3>
                                     <p>{location.address}</p>

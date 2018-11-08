@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 import { keys } from '../APIs/keys';
-import { mapStyle } from './GoogleMapStyle';
 import '../App.css'
 
 const MapComponent = withScriptjs(withGoogleMap(props => 
@@ -21,7 +20,6 @@ const MapComponent = withScriptjs(withGoogleMap(props =>
                         onClick={() => props.clickMarker(marker) }
                         animation={marker.animation}
                         icon={'http://www.jonmaldia.com/img/van.png'}
-                        styles={mapStyle}
                     >
                         { marker.isOpen && (
                             <InfoWindow>
