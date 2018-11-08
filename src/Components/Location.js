@@ -10,16 +10,17 @@ const Location = props => {
                     props.locations.map((location, index) => {
                         return (
                             <div 
+                                key={index}
                                 className="Truck-wrapper"
-                                // onMouseEnter={props.clickMarker}
-                                // onMouseLeave={props.closeAllInfoWindow}
+                                onMouseOver={ () => props.clickLocation(location) }
                             >
-                                <div className="Truck-image"></div>
-                                <div key="index" className="Truck">
+                                <div className="Truck-image"
+                                // onMouseLeave={props.closeAllInfoWindow}
+                                ></div>
+                                <div className="Truck">
                                     <h3>{location.applicant}</h3>
                                     <p>{location.address}</p>
                                     <p>{location.fooditems}</p>
-                                    <a href={location.schedule}>Schedule</a>
                                 </div>
                             </div>
                         )
@@ -28,7 +29,7 @@ const Location = props => {
             </div>
             <button onClick={props.openDrawer}>
                 {
-                    props.drawer ? <i class="fas fa-less-than"></i> : <i class="fas fa-greater-than"></i> 
+                    props.drawer ? <i className="fas fa-less-than"></i> : <i className="fas fa-greater-than"></i> 
                 }
             </button>
         </div>

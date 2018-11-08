@@ -1,5 +1,3 @@
-/*global google*/
-
 import React, { Component } from 'react'
 
 import Search from './Components/Search'
@@ -21,7 +19,7 @@ class App extends Component {
       loading: true,
       locations: [],
       markers: [], 
-      drawer: false
+      drawer: true
     }
   }
 
@@ -31,8 +29,9 @@ class App extends Component {
     // Grabs food truck data
     dataSFGov.getDataSF().then(locations => {
       // Creates array for markers
-      const markers = locations.map(location => {
+      const markers = locations.map((location, index) => {
         return {
+          id: location.objectid,
           address: location.address,
           applicant: location.applicant, 
           foodItems: location.fooditems,
@@ -76,8 +75,8 @@ class App extends Component {
 
   // Closes all the infoWindow - helper
   closeAllInfoWindow() {
-    this.state.markers.forEach(markerMap => {
-      markerMap.isOpen = false
+    this.state.markers.forEach(marker => {
+      marker.isOpen = false
     })
     this.setState((prevState) => ({ markers: prevState.markers }))
   }
@@ -87,9 +86,16 @@ class App extends Component {
   // Closes other windows when a marker is clicked
   clickMarker = (marker) => {
     this.closeAllInfoWindow()
+    console.log(marker)
     marker.isOpen = true
 
     this.setState((prevState) => ({ markers: prevState.markers }))
+  }
+
+  clickLocation = (location) => {
+    let marker = this.state.markers.find(marker => marker.id === location.objectid)
+    
+    this.clickMarker(marker)
   }
 
 
@@ -100,7 +106,6 @@ class App extends Component {
   }
 
 
-
   render() {
     const { loading, currentLocation } = this.state;
 
@@ -108,16 +113,14 @@ class App extends Component {
       return null;
     }
 
-    console.log(this.state.markers)
-    console.log(this.state.locations[20])
-
+    console.log(this.state.locations[10])
     return (
       <div className="App">
         <Search {...this.state} handleLocalization={this.handleLocalization}/>
         <Location 
           {...this.state} 
           openDrawer={this.openDrawer}  
-          clickMarker={this.clickMarker}
+          clickLocation={this.clickLocation}
           closeAllInfoWindow={this.closeAllInfoWindow}
         />
         <GoogleMapComponent

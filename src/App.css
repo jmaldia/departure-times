@@ -110,14 +110,14 @@ body {
   top: 0;
   left: 0;
   height: 98vh;
-  min-width: 450px;
-  max-width: 450px;
+  min-width: 400px;
+  max-width: 400px;
   margin-top: 35px;
   transition: transform .9s;
 }
 
 .Location-hide {
-  transform: translateX(-410px);
+  transform: translateX(-360px);
   transition: transform 1.2s;
 }
 
@@ -137,7 +137,7 @@ body {
   padding: 15px;
   text-align: left;
   border-top: 1px solid rgba(236, 236, 236,,1);
-  line-height: 120%;
+  line-height: 110%;
   background: rgb(236, 236, 236,);
   background: linear-gradient(180deg, rgba(236, 236, 236, .85) 30%, rgba(255,255,255,1) 70%);
 }
@@ -145,15 +145,15 @@ body {
 .Truck-wrapper {
   display: flex;
   width: 100%;
-  height: 165px;
+  height: 140px;
 }
 
 .Truck {
-  width: 65%;
+  width: 70%;
 }
 
 .Truck-image {
-  width: 35%;
+  width: 30%;
   height: 100%;
   background-color: #444;
   background-image: url("http://jonmaldia.com/img/foodtruck.jpeg");
@@ -165,13 +165,13 @@ body {
   padding-bottom: 10px;
   text-transform: uppercase;
   color: #2d3436;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bolder;
 }
 
 .Truck p {
   font-size: 1rem;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   color: #2c3e50;
 }
 
