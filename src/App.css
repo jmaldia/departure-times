@@ -75,19 +75,23 @@ body {
 
 .Search button {
   padding: 9px;
-  margin-left: 5px;
-  min-width: 150px;
-  max-width: 150px;
+  margin-left: 0;
+  min-width: 160px;
+  max-width: 160px;
   width: 150px;
   border: none;
   border-radius: 2px;
   background-color: #f39c12;
   color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
   box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
     -webkit-box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
     -moz-box-shadow: 1px 1px 0px 0.1px rgba(173,173,173,0.69);
+}
+
+.Search button:hover {
+  background-color: #f1c40f;
 }
 
 /* END SEARCH COMPONENT */
@@ -106,9 +110,8 @@ body {
   top: 0;
   left: 0;
   height: 98vh;
-  min-width: 400px;
-  max-width: 600px;
-  width: 30%;
+  min-width: 450px;
+  max-width: 450px;
   margin-top: 35px;
   /* transform: translateX(-360px); */
   transition: transform .9s;
@@ -132,10 +135,10 @@ body {
 }
 
 .Truck {
-  padding: 20px;
+  padding: 15px;
   text-align: left;
   border-top: 1px solid rgba(236, 236, 236,,1);
-  line-height: 130%;
+  line-height: 120%;
   background: rgb(236, 236, 236,);
   background: linear-gradient(180deg, rgba(236, 236, 236, .85) 30%, rgba(255,255,255,1) 70%);
 }
@@ -147,11 +150,11 @@ body {
 }
 
 .Truck {
-  width: 60%;
+  width: 65%;
 }
 
 .Truck-image {
-  width: 40%;
+  width: 35%;
   height: 100%;
   background-color: #444;
   background-image: url("http://jonmaldia.com/img/foodtruck.jpeg");
@@ -163,7 +166,7 @@ body {
   padding-bottom: 15px;
   text-transform: uppercase;
   color: #2d3436;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bolder;
 }
 
@@ -175,6 +178,10 @@ body {
 
 .Truck a {
   color: #f39c12;
+}
+
+.Truck a:hover {
+  color: #f1c40f;
 }
 
 .Location button {
@@ -197,6 +204,5 @@ body {
   background-color: rgba(236, 236, 236, .75);
   color: #ffffff;
 }
-
 /* END LOCATION COMPONENT */
 /**************************/
