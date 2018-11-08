@@ -20,7 +20,7 @@ const Location = props => {
                     })
                 }
             </div>
-            <button><i class="fas fa-greater-than"></i><i class="fas fa-less-than"></i></button>
+            <button><i class="fas fa-greater-than"></i></button>
         </div>
     )
 }
@@ -30,3 +30,4 @@ export default Location
 
 // <p>Latitude: {location.latitude}</p>
 // <p>Longitude: {location.longitude}</p>
+// <i class="fas fa-less-than"></i>
