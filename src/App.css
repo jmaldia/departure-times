@@ -113,12 +113,13 @@ body {
   min-width: 400px;
   max-width: 400px;
   margin-top: 35px;
-  transition: transform .9s;
+  transition: transform .7s;
 }
 
 .Location-hide {
   transform: translateX(-360px);
-  transition: transform 1.2s;
+  transition: transform .7s;    
+  transition-timing-function: cubic-bezier(.12,.99,.87,.87);
 }
 
 .Venues {
@@ -140,6 +141,12 @@ body {
   line-height: 110%;
   background: rgb(236, 236, 236,);
   background: linear-gradient(180deg, rgba(236, 236, 236, .85) 30%, rgba(255,255,255,1) 70%);
+}
+
+.Truck:hover {
+  background: rgb(186, 186, 186,);
+  background: linear-gradient(180deg, rgba(186, 186, 186, .85) 30%, rgba(255,255,255,1) 70%);
+  cursor: default;
 }
 
 .Truck-wrapper {
